@@ -4,9 +4,6 @@ public class Hotel {
 
 	private String hotelName;
 	private int regularRate;
-	private int WeeklyRate;
-	private int WeekEndRate;
-	private int rating;
 	
 	public Hotel(String hotelName, int regularRate){
 		this.hotelName = hotelName;

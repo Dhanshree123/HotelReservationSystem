@@ -13,11 +13,12 @@ public class HotelReservationSystemMain {
 		while(true) {
 			System.out.println("Choose the option");
 			System.out.println("1.Add hotel");
-			System.out.println("2.Exit");
+			System.out.println("2.Find Cheapest hotel");
+			System.out.println("3.Exit");
 			
 			int choice = sc.nextInt();
 			
-			if(choice == 2)
+			if(choice == 3)
 				break;
 			
 			switch(choice) {
@@ -28,6 +29,15 @@ public class HotelReservationSystemMain {
 				int regularRate = sc.nextInt();
 				
 				HotelReservationSystem.addHotel(hotelName, regularRate);
+				break;
+				
+			case 2:
+				System.out.println("Enter the start date");
+				String startDate = sc.next();
+				System.out.println("Enter the end date");
+				String endDate = sc.next();
+				
+				HotelReservationSystem.findCheapestHotel(startDate,endDate);
 				break;
 			}
 		}
