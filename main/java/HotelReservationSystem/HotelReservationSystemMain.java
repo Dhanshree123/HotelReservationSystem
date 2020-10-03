@@ -14,11 +14,12 @@ public class HotelReservationSystemMain {
 			System.out.println("Choose the option");
 			System.out.println("1.Add hotel");
 			System.out.println("2.Find Cheapest hotel");
-			System.out.println("3.Exit");
+			System.out.println("3.Add Hotel with Weekly and Weekend rates");
+			System.out.println("4.Exit");
 			
 			int choice = sc.nextInt();
 			
-			if(choice == 3)
+			if(choice == 4)
 				break;
 			
 			switch(choice) {
@@ -38,6 +39,17 @@ public class HotelReservationSystemMain {
 				String endDate = sc.next();
 				
 				HotelReservationSystem.findCheapestHotel(startDate,endDate);
+				break;
+				
+			case 3:
+				System.out.println("Enter the hotel name for adding rates");
+				String hName = sc.next();
+				System.out.println("Enter the Weekly rate");
+				int WeeklyRate = sc.nextInt();
+				System.out.println("Enter the WeekEnd rate");
+				int WeekEndRate = sc.nextInt();
+				HotelReservationSystem.addRatesAndHotel(hName,WeeklyRate,WeekEndRate);
+				
 				break;
 			}
 		}

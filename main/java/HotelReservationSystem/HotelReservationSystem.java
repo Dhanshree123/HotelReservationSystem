@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class HotelReservationSystem {
 
 	public static List<Hotel> hotelList = new ArrayList<Hotel>();
+	public static List<Hotel> hotelList_rates = new ArrayList<Hotel>();
 	
 	public static void addHotel(String hotelName, int regularRate) {
 		Hotel hotel = new Hotel(hotelName,regularRate);
@@ -28,6 +29,13 @@ public class HotelReservationSystem {
 		long numOfDays = TimeUnit.DAYS.convert(end.getTime() - start.getTime(), TimeUnit.MILLISECONDS);
 		Hotel cheapestHotel = hotelList.stream().min(Comparator.comparing(i->i.getRegularRate())).orElse(null);
 		System.out.println("Cheapest Hotel:- "+cheapestHotel.getHotelName() + ", Total rate:- "+cheapestHotel.getRegularRate()*(numOfDays+1));
+		
+	}
+	
+	public static void addRatesAndHotel(String hName, int weeklyRate, int weekEndRate) {
+		Hotel hotel = new Hotel(hName,weeklyRate,weekEndRate);
+		hotelList_rates.add(hotel);
+		
 		
 	}
 	
