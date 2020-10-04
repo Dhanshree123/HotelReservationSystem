@@ -39,4 +39,45 @@ public class HotelReservationSystem {
 		
 	}
 	
+	public static void findCheapestHotelWithRates(String startDate, String endDate) throws ParseException {
+		LocalDate start = LocalDate.parse(startDate);
+		LocalDate end = LocalDate.parse(endDate);
+		
+		LocalDate OriginalStart = start;
+		LocalDate OriginalEnd = end;
+		String CheapestHotel = ""; 
+		long min_rate = 1000000000;
+		
+		for(Hotel h: hotelList_rates) {
+			
+		 long totalCost = 0;
+		 start = OriginalStart;
+		 end = OriginalEnd.plusDays(1);
+		  while(!(start.equals(end))) {
+			 
+			  int day = start.getDayOfWeek().getValue(); 
+			  
+			if(day == 6 || day== 7)
+				totalCost = totalCost + h.getWeekEndRate();
+			
+			else
+				totalCost = totalCost + h.getWeeklyRate();
+			
+			start = start.plusDays(1);
+			
+			
+		  }
+		    if(totalCost < min_rate)
+		    {
+		    	min_rate = totalCost;
+		    	CheapestHotel = h.getHotelName();
+		    	
+		    }
+		    System.out.println(h.getHotelName()+" "+ totalCost);
+			
+		}
+		
+	    System.out.println("Cheapest hotel is : "+CheapestHotel+ " total rate is " + min_rate);	
+	}
+	
 }
