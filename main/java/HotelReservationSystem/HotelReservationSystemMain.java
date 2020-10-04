@@ -19,11 +19,12 @@ public class HotelReservationSystemMain {
 			System.out.println("5.Add ratings to hotels");
 			System.out.println("6.Find Cheapest Best rated hotel with weekly and weekend rates.Date format -(YYYY-MM-DD)");
 			System.out.println("7.Find Best Rated hotel with weekly and weekend rates.Date format -(YYYY-MM-DD)");
-			System.out.println("8.Exit");
+			System.out.println("8.Add Weekly and Weekend rates for reward Customers");
+			System.out.println("9.Exit");
 			
 			int choice = sc.nextInt();
 			
-			if(choice == 8)
+			if(choice == 9)
 				break;
 			
 			switch(choice) {
@@ -89,6 +90,15 @@ public class HotelReservationSystemMain {
 				String eDate_Bestrate = sc.next();
 				HotelReservationSystem.findBestRatedHotelWithRates(sDate_Bestrate,eDate_Bestrate);
 				break;
+				
+			case 8:
+				System.out.println("Enter the hotel name for adding rates");
+				String hName_reward = sc.next();
+				System.out.println("Enter the Reward Weekly rate");
+				int RewardWeeklyRate = sc.nextInt();
+				System.out.println("Enter the Reward WeekEnd rate");
+				int RewardWeekEndRate = sc.nextInt();
+				HotelReservationSystem.addRewardRates(hName_reward,RewardWeeklyRate,RewardWeekEndRate);
 				
 			default:
 				break;

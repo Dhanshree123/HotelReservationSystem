@@ -178,5 +178,16 @@ public class HotelReservationSystem {
 	    System.out.println("Best rated hotel is : "+Hotel_name+ " ,total rate is: " + min_rate +" ,Rating: "+BestRating);	
 		
 	}
+
+	public static void addRewardRates(String hName_reward, int rewardWeeklyRate, int rewardWeekEndRate) {
+		for(Hotel h: hotelList_rates) {
+	    	 if(h.getHotelName().equals(hName_reward)) {
+	    		 h.setRewardWeeklyRate(rewardWeeklyRate);
+	    		 h.setRewardWeekEndRate(rewardWeekEndRate);
+	    	 }
+	     }
+		
+		
+	}
 	
 }
