@@ -43,7 +43,7 @@ public class HotelReservationSystem {
 	}
 
 	
-	public static long calculateRewardCost(Hotel h,LocalDate start,LocalDate end) {
+	public static long calculateRegularCost(Hotel h,LocalDate start,LocalDate end) {
 		
 		long totalCost = 0;
 		 end = end.plusDays(1);
@@ -52,10 +52,10 @@ public class HotelReservationSystem {
 			  int day = start.getDayOfWeek().getValue(); 
 			  
 			if(day == 6 || day== 7)
-				totalCost = totalCost + h.getRewardWeekEndRate();
+				totalCost = totalCost + h.getWeekEndRate();
 			
 			else
-				totalCost = totalCost + h.getRewardWeeklyRate();
+				totalCost = totalCost + h.getWeeklyRate();
 			
 			start = start.plusDays(1);
 			
@@ -65,13 +65,13 @@ public class HotelReservationSystem {
 	}
 	
 	//UC 11 Using java stream
-	public static void findCheapestBestRatedHotelWithRewardRates(String sDate_Rewardrate, String eDate_Rewardrate) {
+	public static void findCheapestBestRatedHotelWithRegularRates(String sDate_Rewardrate, String eDate_Rewardrate) {
 		LocalDate start = LocalDate.parse(sDate_Rewardrate);
 		LocalDate end = LocalDate.parse(eDate_Rewardrate);
 		String CheapestHotel = ""; 
 		int BestRating = 0;
-		long min_rate = hotelList_rates.stream().map(h->calculateRewardCost(h,start,end)).min(Long::compare).get();
-		List<Hotel> min_rate_hotels = hotelList_rates.stream().filter(h->calculateRewardCost(h,start,end) == min_rate).collect(Collectors.toList());
+		long min_rate = hotelList_rates.stream().map(h->calculateRegularCost(h,start,end)).min(Long::compare).get();
+		List<Hotel> min_rate_hotels = hotelList_rates.stream().filter(h->calculateRegularCost(h,start,end) == min_rate).collect(Collectors.toList());
 		
 		Hotel max_rated_hotel = min_rate_hotels.stream().max((h1,h2) -> h1.getRating()-h2.getRating()).get();
 		CheapestHotel = max_rated_hotel.getHotelName();
