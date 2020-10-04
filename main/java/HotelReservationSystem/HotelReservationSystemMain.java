@@ -12,42 +12,22 @@ public class HotelReservationSystemMain {
 		
 		while(true) {
 			System.out.println("Choose the option");
-			System.out.println("1.Add hotel with regular rates");
-			System.out.println("2.Find Cheapest hotel with regular rates");
-			System.out.println("3.Add Hotel with Weekly and Weekend rates");
-			System.out.println("4.Find Cheapest hotel with weekly and weekend rates.Date format -(YYYY-MM-DD)");
-			System.out.println("5.Add ratings to hotels");
-			System.out.println("6.Find Cheapest Best rated hotel with weekly and weekend rates.Date format -(YYYY-MM-DD)");
-			System.out.println("7.Find Best Rated hotel with weekly and weekend rates.Date format -(YYYY-MM-DD)");
-			System.out.println("8.Add Weekly and Weekend rates for reward Customers");
-			System.out.println("9.Find Cheapest Best rated hotel with weekly and weekend rates for reward customers.Date format -(YYYY-MM-DD)");
-			System.out.println("10.Exit");
+			System.out.println("1.Add Hotel with Weekly and Weekend rates");
+			System.out.println("2.Add ratings to hotels");
+			System.out.println("3.Add Weekly and Weekend rates for reward Customers");
+		
+			//UC 11 Using java stream
+			System.out.println("4.Find Cheapest Best rated hotel with weekly and weekend rates for reward customers.Date format -(YYYY-MM-DD)");
+			System.out.println("5.Exit");
 			
 			int choice = sc.nextInt();
 			
-			if(choice == 10)
+			if(choice == 5)
 				break;
 			
 			switch(choice) {
-			case 1:
-				System.out.println("Enter hotel name");
-				String hotelName = sc.next();
-				System.out.println("Enter Regular rate");
-				int regularRate = sc.nextInt();
-				
-				HotelReservationSystem.addHotel(hotelName, regularRate);
-				break;
-				
-			case 2:
-				System.out.println("Enter the start date");
-				String startDate = sc.next();
-				System.out.println("Enter the end date");
-				String endDate = sc.next();
-				
-				HotelReservationSystem.findCheapestHotel(startDate,endDate);
-				break;
 			
-			case 3:
+			case 1:
 				System.out.println("Enter the hotel name for adding rates");
 				String hName = sc.next();
 				System.out.println("Enter the Weekly rate");
@@ -58,16 +38,7 @@ public class HotelReservationSystemMain {
 				
 				break;
 				
-			case 4:
-				System.out.println("Enter the start date");
-				String sDate = sc.next();
-				System.out.println("Enter the end date");
-				String eDate = sc.next();
-				
-				HotelReservationSystem.findCheapestHotelWithRates(sDate,eDate);
-				break;
-				
-			case 5:
+			case 2:
 				System.out.println("Enter the hotel name for adding rating");
 				String hotelName_rating = sc.next();
 				System.out.println("Enter the Rating");
@@ -76,24 +47,9 @@ public class HotelReservationSystemMain {
 				
 				break;
 				
-			case 6:
-				System.out.println("Enter the start date");
-				String sDate_rate = sc.next();
-				System.out.println("Enter the end date");
-				String eDate_rate = sc.next();
-				HotelReservationSystem.findCheapestBestRatedHotelWithRates(sDate_rate,eDate_rate);
-				break;
 				
-			case 7:
-				System.out.println("Enter the start date");
-				String sDate_Bestrate = sc.next();
-				System.out.println("Enter the end date");
-				String eDate_Bestrate = sc.next();
-				HotelReservationSystem.findBestRatedHotelWithRates(sDate_Bestrate,eDate_Bestrate);
-				break;
-				
-			case 8:
-				System.out.println("Enter the hotel name for adding rates");
+			case 3:
+				System.out.println("Enter the hotel name for adding reward rates");
 				String hName_reward = sc.next();
 				System.out.println("Enter the Reward Weekly rate");
 				int RewardWeeklyRate = sc.nextInt();
@@ -102,7 +58,8 @@ public class HotelReservationSystemMain {
 				HotelReservationSystem.addRewardRates(hName_reward,RewardWeeklyRate,RewardWeekEndRate);
 				break;
 				
-			case 9:
+				//UC 11 Using java stream
+			case 4:
 				System.out.println("Enter the start date");
 				String sDate_Rewardrate = sc.next();
 				System.out.println("Enter the end date");
