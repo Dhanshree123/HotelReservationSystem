@@ -4,6 +4,7 @@ public class Hotel {
 
 	private String hotelName;
 	private int regularRate;
+	private int rating;
 	private int WeeklyRate;
 	private int WeekEndRate;
 	
@@ -32,6 +33,13 @@ public class Hotel {
 	
 	public int getRegularRate() {
 		return regularRate;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	
+	public int getRating() {
+		return rating;
 	}
 	public void setWeeklyRate(int regularRate) {
 		this.WeeklyRate = WeeklyRate;

@@ -27,16 +27,23 @@ public class HotelReservationSystem {
 		Date end=new SimpleDateFormat("ddMMyyyy").parse(endDate); 
 		
 		long numOfDays = TimeUnit.DAYS.convert(end.getTime() - start.getTime(), TimeUnit.MILLISECONDS);
+		System.out.println(numOfDays+1);
 		Hotel cheapestHotel = hotelList.stream().min(Comparator.comparing(i->i.getRegularRate())).orElse(null);
-		System.out.println("Cheapest Hotel:- "+cheapestHotel.getHotelName() + ", Total rate:- "+cheapestHotel.getRegularRate()*(numOfDays+1));
+		System.out.println(cheapestHotel.getHotelName());
 		
 	}
 	
 	public static void addRatesAndHotel(String hName, int weeklyRate, int weekEndRate) {
 		Hotel hotel = new Hotel(hName,weeklyRate,weekEndRate);
 		hotelList_rates.add(hotel);
-		
-		
+	}
+	
+	public static void addRating(String hotelName, int rating) {
+	     for(Hotel h: hotelList_rates) {
+	    	 if(h.getHotelName().equals(hotelName)) {
+	    		 h.setRating(rating);
+	    	 }
+	     }
 	}
 	
 	public static void findCheapestHotelWithRates(String startDate, String endDate) throws ParseException {

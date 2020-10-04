@@ -12,15 +12,16 @@ public class HotelReservationSystemMain {
 		
 		while(true) {
 			System.out.println("Choose the option");
-			System.out.println("1.Add hotel");
-			System.out.println("2.Find Cheapest hotel");
+			System.out.println("1.Add hotel with regular rates");
+			System.out.println("2.Find Cheapest hotel with regular rates");
 			System.out.println("3.Add Hotel with Weekly and Weekend rates");
 			System.out.println("4.Find Cheapest hotel with weekly and weekend rates.Date format -(YYYY-MM-DD)");
-			System.out.println("5.Exit");
+			System.out.println("5.Add ratings to hotels");
+			System.out.println("6.Exit");
 			
 			int choice = sc.nextInt();
 			
-			if(choice == 5)
+			if(choice == 6)
 				break;
 			
 			switch(choice) {
@@ -41,7 +42,7 @@ public class HotelReservationSystemMain {
 				
 				HotelReservationSystem.findCheapestHotel(startDate,endDate);
 				break;
-				
+			
 			case 3:
 				System.out.println("Enter the hotel name for adding rates");
 				String hName = sc.next();
@@ -61,6 +62,19 @@ public class HotelReservationSystemMain {
 				
 				HotelReservationSystem.findCheapestHotelWithRates(sDate,eDate);
 				break;
+				
+			case 5:
+				System.out.println("Enter the hotel name for adding rates");
+				String hotelName_rating = sc.next();
+				System.out.println("Enter the Rating");
+				int rating = sc.nextInt();
+				HotelReservationSystem.addRating(hotelName_rating,rating);
+				
+				break;
+				
+			default:
+				break;
+					
 			}
 		}
 		
